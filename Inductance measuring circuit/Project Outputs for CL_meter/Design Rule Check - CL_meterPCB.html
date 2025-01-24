@@ -1,0 +1,459 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11/30/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">8:34:40 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc" class="file"><acronym title="C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc">C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">41</td></tr>
+</table>
+</td>
+</table><a name="ID2V5ZUQQQVI12KQZQK3G2JJDFGFANDRYJU5HSUD1KFBDCZYQIFIG"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAH2H0B1LHE1XFCKNOCUNLHJLGF5TVNEFZVQPHDB0U4SICISXTKLF">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVAZSRUD5HI1WII1GKZEVSWJ2KIARSLCTPLLWEINPIFOHS5H3P3WM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGEBSKZ3GGBHHFQS5TSBNT1YH4JR1JYTB1HOS55DKYPBVMKN2XPDE">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">40</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNTFANXTQGIAHOLIAVYTO1RTKMFC1NECBVI1MUPF0CLMIDZ4X3GVE">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDE2TF5QVHASRJBMGWL4T05YKINLPJ1RZN5DDN4RPTMNDAP1S0EXHP">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXT5NQOTRPK0ZH52UJRWI15SHWMRFW1V1OCEEJKLE2XW5KQWBV5HH">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFWL14TAZJLK3F1H0AJKLBRPWVNWEQIADROQ115P1W0ULEGKHG0NK">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCNP1CRAHMPJPDNH0MGYQWA4WWL4FAVMSPE1GN0FXK5FBSWJX5S3M">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOP53VCAJEMKQJWHRKT5CYBSMNJHVS04HVL2W0FE0H5E0XJRXADK">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIJVPOV0JH1A1FR5A1UYADEZTJKATUMQZKMKQUUCRTXKZYAFJHTTB">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDEKQXQ5V1EWDNLI12P1WFHTWDPDTH2PYTT4MVQ4P1QAOJBC0SGIC">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMKNXZUX11TTBDFKQXN3ADGX4VPT24IUTC5QFIKJANNV3UUB34VKI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQQEGOCD3KSAYJMNOVZHFDWSST4T0OFDZO2XFUDHYY05BRTF2H0E">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFVSQUPLC5HY4M0J2LDNY2H35MIJGQAUEWGZDZYEZ4LANACMB0RFN">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">41</td>
+</tr>
+</table><br><a name="IDGEBSKZ3GGBHHFQS5TSBNT1YH4JR1JYTB1HOS55DKYPBVMKN2XPDE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.409mil|Location2.X=6214mil|Location1.Y=4531.772mil|Location2.Y=4729mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.409mil|Location2.X=6214mil|Location1.Y=4531.772mil|Location2.Y=4729mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad C1-1(149.987mm,115.757mm) on Multi-Layer And Pad L1-1(157.099mm,119.38mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.795mil|Location2.X=5930.591mil|Location1.Y=4693mil|Location2.Y=4878.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.795mil|Location2.X=5930.591mil|Location1.Y=4693mil|Location2.Y=4878.228mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C3-2(143.454mm,119.888mm) on Multi-Layer And Pad C1-2(149.987mm,123.257mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.409mil|Location2.X=6442mil|Location1.Y=4671mil|Location2.Y=4878.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5879.409mil|Location2.X=6442mil|Location1.Y=4671mil|Location2.Y=4878.228mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-2(149.987mm,123.257mm) on Multi-Layer And Pad L1-2(162.89mm,119.38mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7020.394mil|Location2.X=7408.622mil|Location1.Y=4637.953mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7020.394mil|Location2.X=7408.622mil|Location1.Y=4637.953mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad R5-2(178.943mm,123.364mm) on Multi-Layer And Pad C2-1(187.579mm,118.404mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7190.394mil|Location2.X=7408.622mil|Location1.Y=4438.543mil|Location2.Y=4882.047mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7190.394mil|Location2.X=7408.622mil|Location1.Y=4438.543mil|Location2.Y=4882.047mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_2 Between Pad R6-1(183.261mm,113.364mm) on Multi-Layer And Pad C2-2(187.579mm,123.404mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5483mil|Location2.X=6903.622mil|Location1.Y=4531.26mil|Location2.Y=4747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5483mil|Location2.X=6903.622mil|Location1.Y=4531.26mil|Location2.Y=4747mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad C3-1(139.954mm,119.888mm) on Multi-Layer And Pad D1-1(174.752mm,115.694mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5220.394mil|Location2.X=5537mil|Location1.Y=4693mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5220.394mil|Location2.X=5537mil|Location1.Y=4693mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad R8-2(133.223mm,123.364mm) on Multi-Layer And Pad C3-1(139.954mm,119.888mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5220.394mil|Location2.X=5674.795mil|Location1.Y=4438.543mil|Location2.Y=4747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5220.394mil|Location2.X=5674.795mil|Location1.Y=4438.543mil|Location2.Y=4747mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R8-1(133.223mm,113.364mm) on Multi-Layer And Pad C3-2(143.454mm,119.888mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.858mil|Location2.X=7573.528mil|Location1.Y=1985.331mil|Location2.Y=4638.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.858mil|Location2.X=7573.528mil|Location1.Y=1985.331mil|Location2.Y=4638.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C4-N(182.868mm,51.054mm) on Multi-Layer And Pad OPamp-3(191.516mm,116.967mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.945mil|Location2.X=7165.142mil|Location1.Y=1985.331mil|Location2.Y=4779.591mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.945mil|Location2.X=7165.142mil|Location1.Y=1985.331mil|Location2.Y=4779.591mil|Absolute=True">Un-Routed Net Constraint: Net NetC4_P Between Pad Q1-1(106.084mm,120.65mm) on Multi-Layer And Pad C4-P(181.368mm,51.054mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.055mil|Location2.X=3944.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.055mil|Location2.X=3944.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C5-1(93.726mm,122.555mm) on Multi-Layer And Pad C6-1(99.441mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3515.394mil|Location2.X=3719.945mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3515.394mil|Location2.X=3719.945mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R3-1(89.916mm,113.364mm) on Multi-Layer And Pad C5-1(93.726mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.055mil|Location2.X=4794.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.055mil|Location2.X=4794.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_2 Between Pad C5-2(96.266mm,122.555mm) on Multi-Layer And Pad C8-2(121.031mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3885.055mil|Location2.X=5269.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3885.055mil|Location2.X=5269.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(99.441mm,122.555mm) on Multi-Layer And Pad R8-1(133.223mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3985.055mil|Location2.X=4474.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3985.055mil|Location2.X=4474.945mil|Location1.Y=4795.055mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC6_2 Between Pad C6-2(101.981mm,122.555mm) on Multi-Layer And Pad C7-1(112.903mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.055mil|Location2.X=6714.354mil|Location1.Y=4326.315mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.055mil|Location2.X=6714.354mil|Location1.Y=4326.315mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC6_2 Between Pad C7-1(112.903mm,122.555mm) on Multi-Layer And Pad J1-5(169.689mm,110.744mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4205.409mil|Location2.X=4574.945mil|Location1.Y=4670.409mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4205.409mil|Location2.X=4574.945mil|Location1.Y=4670.409mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC7_2 Between Pad Q1-2(107.569mm,119.38mm) on Multi-Layer And Pad C7-2(115.443mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4515.055mil|Location2.X=4934.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4515.055mil|Location2.X=4934.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC7_2 Between Pad C7-2(115.443mm,122.555mm) on Multi-Layer And Pad R1-1(124.714mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4263.874mil|Location2.X=4694.945mil|Location1.Y=4720.409mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4263.874mil|Location2.X=4694.945mil|Location1.Y=4720.409mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC8_1 Between Pad Q1-3(109.054mm,120.65mm) on Multi-Layer And Pad C8-1(118.491mm,122.555mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4635.055mil|Location2.X=5099.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4635.055mil|Location2.X=5099.606mil|Location1.Y=4438.543mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC8_1 Between Pad C8-1(118.491mm,122.555mm) on Multi-Layer And Pad R4-1(128.905mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.055mil|Location2.X=6714.354mil|Location1.Y=4227.89mil|Location2.Y=4854.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.055mil|Location2.X=6714.354mil|Location1.Y=4227.89mil|Location2.Y=4854.945mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_2 Between Pad C8-2(121.031mm,122.555mm) on Multi-Layer And Pad J1-6(169.689mm,108.244mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=6903.622mil|Location1.Y=3932.614mil|Location2.Y=4578.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=6903.622mil|Location1.Y=3932.614mil|Location2.Y=4578.504mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad J1-9(169.689mm,100.744mm) on Multi-Layer And Pad D1-1(174.752mm,115.694mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6856.378mil|Location2.X=8179.606mil|Location1.Y=4531.26mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6856.378mil|Location2.X=8179.606mil|Location1.Y=4531.26mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad D1-1(174.752mm,115.694mm) on Multi-Layer And Pad R7-2(207.137mm,123.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6856.378mil|Location2.X=7573.528mil|Location1.Y=4771.472mil|Location2.Y=4878.74mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6856.378mil|Location2.X=7573.528mil|Location1.Y=4771.472mil|Location2.Y=4878.74mil|Absolute=True">Un-Routed Net Constraint: Net NetD1_2 Between Pad D1-2(174.752mm,123.32mm) on Multi-Layer And Pad OPamp-1(191.516mm,122.047mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7506.472mil|Location2.X=7998.622mil|Location1.Y=4531.26mil|Location2.Y=4838.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7506.472mil|Location2.X=7998.622mil|Location1.Y=4531.26mil|Location2.Y=4838.528mil|Absolute=True">Un-Routed Net Constraint: Net NetD1_2 Between Pad OPamp-1(191.516mm,122.047mm) on Multi-Layer And Pad D2-1(202.565mm,115.694mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7506.472mil|Location2.X=7998.622mil|Location1.Y=4671.472mil|Location2.Y=4878.74mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7506.472mil|Location2.X=7998.622mil|Location1.Y=4671.472mil|Location2.Y=4878.74mil|Absolute=True">Un-Routed Net Constraint: Net NetD2_2 Between Pad OPamp-2(191.516mm,119.507mm) on Multi-Layer And Pad D2-2(202.565mm,123.32mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7951.378mil|Location2.X=8179.606mil|Location1.Y=4438.543mil|Location2.Y=4878.74mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7951.378mil|Location2.X=8179.606mil|Location1.Y=4438.543mil|Location2.Y=4878.74mil|Absolute=True">Un-Routed Net Constraint: Net NetD2_2 Between Pad D2-2(202.565mm,123.32mm) on Multi-Layer And Pad R7-1(207.137mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6384mil|Location2.X=6714.354mil|Location1.Y=4671mil|Location2.Y=4787.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6384mil|Location2.X=6714.354mil|Location1.Y=4671mil|Location2.Y=4787.386mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad L1-2(162.89mm,119.38mm) on Multi-Layer And Pad J1-1(169.689mm,120.744mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7573.528mil|Location1.Y=4571.472mil|Location2.Y=4787.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7573.528mil|Location1.Y=4571.472mil|Location2.Y=4787.386mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-1(169.689mm,120.744mm) on Multi-Layer And Pad OPamp-3(191.516mm,116.967mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5050.394mil|Location2.X=6714.354mil|Location1.Y=4621.591mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5050.394mil|Location2.X=6714.354mil|Location1.Y=4621.591mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetJ1_2 Between Pad R4-2(128.905mm,123.364mm) on Multi-Layer And Pad J1-2(169.689mm,118.244mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7573.528mil|Location1.Y=4471.472mil|Location2.Y=4590.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7573.528mil|Location1.Y=4471.472mil|Location2.Y=4590.535mil|Absolute=True">Un-Routed Net Constraint: Net NetJ1_3 Between Pad J1-3(169.689mm,115.744mm) on Multi-Layer And Pad OPamp-4(191.516mm,114.427mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7873.528mil|Location1.Y=4424.74mil|Location2.Y=4838.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7873.528mil|Location1.Y=4424.74mil|Location2.Y=4838.528mil|Absolute=True">Un-Routed Net Constraint: Net NetJ1_4 Between Pad J1-4(169.689mm,113.244mm) on Multi-Layer And Pad OPamp-8(199.136mm,122.047mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=6714.354mil|Location1.Y=4129.465mil|Location2.Y=4295.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=6714.354mil|Location1.Y=4129.465mil|Location2.Y=4295.26mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_2 Between Pad J1-7(169.689mm,105.744mm) on Multi-Layer And Pad J1-6(169.689mm,108.244mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7069.606mil|Location1.Y=4227.89mil|Location2.Y=4487.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6646.984mil|Location2.X=7069.606mil|Location1.Y=4227.89mil|Location2.Y=4487.756mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_2 Between Pad J1-6(169.689mm,108.244mm) on Multi-Layer And Pad R5-1(178.943mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156mil|Location2.X=7069.606mil|Location1.Y=4671mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156mil|Location2.X=7069.606mil|Location1.Y=4671mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad L1-1(157.099mm,119.38mm) on Multi-Layer And Pad R5-2(178.943mm,123.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7190.394mil|Location2.X=7573.528mil|Location1.Y=4671.472mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7190.394mil|Location2.X=7573.528mil|Location1.Y=4671.472mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetD2_2 Between Pad R6-2(183.261mm,123.364mm) on Multi-Layer And Pad OPamp-2(191.516mm,119.507mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3515.394mil|Location2.X=4206.126mil|Location1.Y=4720.409mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3515.394mil|Location2.X=4206.126mil|Location1.Y=4720.409mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC4_P Between Pad R3-2(89.916mm,123.364mm) on Multi-Layer And Pad Q1-1(106.084mm,120.65mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3345.394mil|Location2.X=4264.591mil|Location1.Y=4670.409mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3345.394mil|Location2.X=4264.591mil|Location1.Y=4670.409mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetC7_2 Between Pad R2-2(85.598mm,123.364mm) on Multi-Layer And Pad Q1-2(107.569mm,119.38mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4885.394mil|Location2.X=5099.606mil|Location1.Y=4832.244mil|Location2.Y=4881.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4885.394mil|Location2.X=5099.606mil|Location1.Y=4832.244mil|Location2.Y=4881.457mil|Absolute=True">Un-Routed Net Constraint: Net NetJ1_2 Between Pad R1-2(124.714mm,123.364mm) on Multi-Layer And Pad R4-2(128.905mm,123.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3345.394mil|Location2.X=3564.606mil|Location1.Y=4438.543mil|Location2.Y=4487.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3345.394mil|Location2.X=3564.606mil|Location1.Y=4438.543mil|Location2.Y=4487.756mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R2-1(85.598mm,113.364mm) on Multi-Layer And Pad R3-1(89.916mm,113.364mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDIJVPOV0JH1A1FR5A1UYADEZTJKATUMQZKMKQUUCRTXKZYAFJHTTB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7164.375mil|Location2.X=7175.625mil|Location1.Y=2004.375mil|Location2.Y=2015.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\MSI CYBORG\Documents\Altium\CL_meter\CL_meterPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7164.375mil|Location2.X=7175.625mil|Location1.Y=2004.375mil|Location2.Y=2015.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad C4-N(182.868mm,51.054mm) on Multi-Layer And Pad C4-P(181.368mm,51.054mm) on Multi-Layer [Top Solder] Mask Sliver [0.247mm] / [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
