@@ -1,0 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: CapMeasure2.PcbDoc   12/9/2024  3:29:24 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : CapMeasure2.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.7mm (28mil)                                             Round             2         PTH        5.00mm (0.20inch)
+T2      0.711mm (28mil)                                           Round             6         PTH        158.47mm (6.24inch)
+T3      0.9mm (35mil)                                             Round             19        PTH        138.00mm (5.43inch)
+T4      1mm (39mil)                                               Round             2         PTH        2.50mm (0.10inch)
+T5      1.05mm (41mil)                                            Round             2         PTH        9.54mm (0.38inch)
+T6      1.092mm (43mil)                                           Round             16        PTH        379.79mm (14.95inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              47
+
+Total Processing Time (hh:mm:ss) : 00:00:00

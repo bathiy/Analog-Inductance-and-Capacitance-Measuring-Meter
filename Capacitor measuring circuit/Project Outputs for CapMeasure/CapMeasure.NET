@@ -1,0 +1,32 @@
+BOARD = PROTEL.PCB;
+
+
+PARTS
+FP-K15H5-MFG    = C1;   % Variable Capacitor
+ONSC-AXIAL_LEAD-2-59-10_P= D1;   % 1N4007
+P0008A          = InvertingAmp;% TL072CP
+FP-B3B-XH-A_LF_SN-MFG= J1;   % Input
+FP-B2B-XH-A_LF_SN-MFG= J2;   % Output
+P0008A          = MultiVibrator;% TL072CP
+RES_AC01_VIS    = R1;   % 47k
+RES_AC01_VIS    = R2;   % 150k
+RES_AC01_VIS    = R3;   % 60k
+RES_AC01_VIS    = R4;   % 10k
+RES_AC01_VIS    = R5;   % 25k
+RES_AC01_VIS    = R6;   % 10k
+RES_AC01_VIS    = R7;   % 10k
+RES_AC01_VIS    = R8;   % 8.2k
+
+NETS
+
+Test port = C1/1 J1/3 MultiVibrator/2 R1/2 ;
+Output test port= InvertingAmp/1 J2/1 R7/1 ;
+NetMultiVibrator_3= MultiVibrator/3 R2/1 R3/2 ;
+NetInvertingAmp_6= InvertingAmp/6 R5/1 R8/2 ;
+NetInvertingAmp_2= InvertingAmp/2 R6/1 R7/2 ;
+NetD1_2   = D1/2 MultiVibrator/1 R1/1 R2/2 ;
+NetD1_1   = D1/1 R4/2 R5/2 ;
+Intermediate test port= InvertingAmp/7 J2/2 R6/2 R8/1 ;
+GND       = C1/2 InvertingAmp/3 InvertingAmp/5 R3/1 R4/1 ;
+-15V      = InvertingAmp/4 J1/2 MultiVibrator/4 ;
++15V      = InvertingAmp/8 J1/1 MultiVibrator/8 ;
